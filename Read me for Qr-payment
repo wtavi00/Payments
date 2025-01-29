@@ -1,53 +1,73 @@
-Generate a python code for following Feature and its Description. 
+# Retail Payment System
 
-Feature: 
+## Overview
+This Python program allows users to make retail payments by either scanning a QR code or entering a merchant ID. The function validates input data and returns a payment object containing details such as the amount, currency, merchant ID, date, and status. Error handling is included for invalid inputs.
 
-    Write a python function to allow the user to make retail payments by scanning a QR code or entering a merchant ID. 
+## Features
+- Supports payment via QR code scanning or manual entry of merchant details.
+- Validates merchant ID, currency, amount, and date format.
+- Returns a structured payment object with status tracking.
+- Logs messages based on user actions and input validation.
 
-Description: 
+## Payment Object Structure
+The function returns a payment object with the following fields:
+- `amount`: The amount of the payment.
+- `currency`: The currency of the payment.
+- `merchant`: The merchant ID.
+- `date`: The date of the payment.
+- `status`: Payment status ("pending", "approved", "declined").
 
-    The function should return a promise that resolves to a payment object.
+## Installation & Usage
+### Prerequisites
+Ensure you have Python installed on your system.
 
-    The payment object should contain the following properties:
+### Running the Program
+1. Clone this repository:
+   ```sh
+   git clone https://github.com/your-repo/retail-payment-system.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd retail-payment-system
+   ```
+3. Run the script:
+   ```sh
+   python payment.py
+   ```
 
-    - amount: the amount of the payment
+### Example Usage
+#### Payment via QR Code
+```python
+qr_code_payment = make_payment(None, None, None, None, qr_code_data={
+    "amount": 100.5,
+    "currency": "USD",
+    "merchant": "MERCHANT123",
+    "date": "2025-01-20"
+})
+print(qr_code_payment)
+```
 
-    - currency: the currency of the payment
+#### Payment via Merchant ID
+```python
+user_payment = make_payment(50, "EUR", "MERCHANT456", "2025-01-21")
+print(user_payment)
+```
 
-    - merchant: the merchant ID
+### Error Handling
+- If an unrecognized merchant ID is entered, the function logs "Merchant not found" and raises an error.
+- If the entered amount is not a number, it logs "Invalid amount" and raises an error.
+- If an invalid currency is entered, it logs "Invalid currency" and raises an error.
+- If an incorrect date format is entered, it logs "Invalid date" and raises an error.
 
-    - date: the date of the payment
+## License
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
 
-    - status: the status of the payment (pending, approved, declined)
+## Author
+Avijit Tarafder
 
-   
+## Contributing
+Contributions are welcome! Please fork the repository and submit a pull request with your changes.
 
-    The function should also have the following behaviour:
+## Issues
+If you encounter any issues, feel free to open an issue in the GitHub repository.
 
-    - If the user scans a QR code, the promise should resolve with a payment object with the amount, currency, merchant and date set to the values from the QR code. The status should be set to pending.
-
-    - If the user enters a merchant ID, the promise should resolve with a payment object with the amount, currency, merchant and date set to the values entered by the user. The status should be set to pending.
-
-    - If the user enters a merchant ID that is not recognised, the promise should reject with an error.
-
-    - If the user enters an amount that is not a number, the promise should reject with an error.
-
-    - If the user enters a currency that is not recognised, the promise should reject with an error.
-
-    - If the user enters a date that is not a valid date, the promise should reject with an error.
-
-   
-
-    The function should also log the following messages to the console:
-
-    - If the user scans a QR code, log "Payment of <amount> <currency> to <merchant> on <date> pending"
-
-    - If the user enters a merchant ID, log "Payment of <amount> <currency> to <merchant> on <date> pending"
-
-    - If the user enters a merchant ID that is not recognised, log "Merchant not found"
-
-    - If the user enters an amount that is not a number, log "Invalid amount"
-
-    - If the user enters a currency that is not recognised, log "Invalid currency"
-
-    - If the user enters a date that is not a valid date, log "Invalid date" 
