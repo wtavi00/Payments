@@ -41,7 +41,7 @@ Ensure you have Python installed on your system.
 qr_code_payment = make_payment(None, None, None, None, qr_code_data={
     "amount": 100.5,
     "currency": "USD",
-    "merchant": "MERCHANT123",
+    "merchant": "VISA",
     "date": "2025-01-20"
 })
 print(qr_code_payment)
@@ -49,7 +49,7 @@ print(qr_code_payment)
 
 #### Payment via Merchant ID
 ```python
-user_payment = make_payment(50, "EUR", "MERCHANT456", "2025-01-21")
+user_payment = make_payment(50, "EUR", "MASTER", "2025-01-21")
 print(user_payment)
 ```
 
