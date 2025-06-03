@@ -5,7 +5,7 @@ def make_payment(amount: Union[float, str], currency: str, merchant: str, date: 
 
     # Predefined set of recognized currencies and merchants
     recognized_currencies = {"USD", "EUR", "INR", "GBP", "JPY"}
-    recognized_merchants = {"Visa", "Master", "American express"}
+    recognized_merchants = {"VISA", "MASTER", "AMERICAN EXPRESS"}
 
     def log(message):
         print(message)
@@ -64,13 +64,13 @@ if __name__ == "__main__":
     qr_code_payment = make_payment(None, None, None, None, qr_code_data={
         "amount": 100.5,
         "currency": "USD",
-        "merchant": "Visa",
+        "merchant": "VISA",
         "date": "2025-01-20"
     })
     print(qr_code_payment)
 
     # Example 2: Payment via merchant ID
-    user_payment = make_payment(50, "EUR", "Master", "2025-01-21")
+    user_payment = make_payment(50, "EUR", "MASTER", "2025-01-21")
     print(user_payment)
 
     # Example 3: Invalid merchant
@@ -78,13 +78,13 @@ if __name__ == "__main__":
     print(invalid_merchant)
 
     # Example 4: Invalid amount
-    invalid_amount = make_payment("fifty", "USD", "Visa", "2025-01-20")
+    invalid_amount = make_payment("fifty", "USD", "VISA", "2025-01-20")
     print(invalid_amount)
 
     # Example 5: Invalid currency
-    invalid_currency = make_payment(50, "XYZ", "Visa", "2025-01-20")
+    invalid_currency = make_payment(50, "XYZ", "VISA", "2025-01-20")
     print(invalid_currency)
 
     # Example 6: Invalid date
-    invalid_date = make_payment(50, "USD", "Visa", "2025-20-01")
+    invalid_date = make_payment(50, "USD", "VISA", "2025-20-01")
     print(invalid_date)
